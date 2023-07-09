@@ -1,7 +1,7 @@
 ---
 import PostLayout from "../layouts/PostLayout.astro";
 
-const posts = await Astro.glob("./posts/*.md");
+const posts = await Astro.glob("./posts/*.md*");
 ---
 
 <PostLayout frontmatter={{ title: "Sitemap" }}>
