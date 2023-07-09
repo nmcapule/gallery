@@ -5,16 +5,19 @@
   let container;
 
   onMount(async () => {
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
+      width / height,
       0.1,
       1000
     );
 
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(200, 200);
+    renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
 
     const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -37,4 +40,12 @@
   });
 </script>
 
-<div class="container" bind:this={container} width="200" height="200" />
+<div class="renderer-container" bind:this={container} />
+
+<style lang="scss">
+  .renderer-container {
+    width: 68ch;
+    height: 68ch;
+    border-radius: 6px;
+  }
+</style>
