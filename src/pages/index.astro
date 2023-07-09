@@ -1,0 +1,17 @@
+---
+import PostLayout from "../layouts/PostLayout.astro";
+
+const posts = await Astro.glob("./posts/*.md");
+---
+
+<PostLayout frontmatter={{ title: "Sitemap" }}>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={post.url}>{JSON.stringify(post.frontmatter.title)}</a>
+        </li>
+      ))
+    }
+  </ul>
+</PostLayout>
